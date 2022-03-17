@@ -1,31 +1,20 @@
 #include <stdio.h>
 
 /**
- * main - sums nultplies of 3 or 5
- * Description: multiples between 0 and 1024
- * Return: Always(0) Success
- */
-
-int main(void)
+*print_to_98 - a function that prints all natural numbers from n to 98
+*user input's number prints to 98, regardless < 98 or > 98
+*@n: number input
+*Return: Always 0 (Success)
+*/
+void print_to_98(int n)
 {
-	int start_num, end_num, total;
-
-	end_num = 1024;
-	total = 0;
-
-	for (start_num = 0; start_num < end_num; start_num++)
+	if (n < 98)
 	{
-		if ((start_num % 3 == 0) || (start_num % 5 == 0))
-		{
-			total = total + start_num;
-		}
-		else
-		{
-			continue;
-		}
-		printf("%d", total);
-		printf("\n");
-
-		return (0);
+		for (n = 0; n <= 97; n++)
+			printf("%d", n);
 	}
+	else
+		for (n = 0; n > 98; n--)
+			printf("%d", n);
+	printf("98\n");
 }
