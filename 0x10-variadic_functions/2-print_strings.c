@@ -6,24 +6,28 @@
  * print_strings - print a string followed by a newline
  * @separator: string to be printed between strings
  * @n: number of strings passed to function
+ * @...: the strings to print
+ *
+ * Description: This function prints strings, separated by separator,followed
+ * by a new line. If separator is NULL, it's treated as the empty string.If a
+ * string is NULL, print "(nil)" instead
  */
-
 void print_strings(const char *separator, const unsigned int n, ...)
 {
 	va_list args;
-	char *hold;
+	unsigned int remaining = n;
+	const char *str = NULL;
 
 	va_start(args, n);
-
-	for (int i = 0; i < n; i++)
+	if (!separator)
+		separator = "";
+	while (remaining--)
 	{
-		hold = va_arg(args, char*);
-		if (hold == NULL)
-			printf("(nil)");
-		else
-			printf("%s", hold);
-		if (i != (n - 1) && separator != NULL)
+		str = va_arg(args, const char *);
+		printf("%s", str ? str : "(nil)");
+		if (remaining)
 			printf("%s", separator);
 	}
 	printf("\n");
+	va_end(args);
 }

@@ -1,78 +1,89 @@
-#include "variadic_functions.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include "variadic_functions.h"
 
 /**
- * _printchar - print char type element from va_list
- * @list: va_list passed to function
+ * print_char - print a character
+ * @args: the va_list with the character to print as it's next element
+ *
+ * Return: the number of bytes printed
  */
-void _printchar(va_list list)
+int print_char(va_list args)
 {
-	printf("%c", va_arg(list, int));
+	return (printf("%c", va_arg(args, int)));
 }
 
 /**
- * _printstr - print string element from va_list
- * @list: va_list passed to function
+ * print_float - print a float
+ * @args: the va_list with the float to print as it's next element
+ *
+ * Return: the number of bytes printed
  */
-void _printstr(va_list list)
+int print_float(va_list args)
 {
-	char *s;
-
-	s = va_arg(list, char *);
-	if (s == NULL)
-		s = "(nil)";
-	printf("%s", s);
-}
-/**
- * _printfloat - print float type element from va_list
- * @list: va_list passed to function
- */
-
-void _printfloat(va_list list)
-{
-	printf("%f", va_arg(list, double));
+	return (printf("%f", va_arg(args, double)));
 }
 
 /**
- * _printint - print int type element from va_list
- * @list: va_list passed to function
+ * print_int - print an integer
+ * @args: the va_list with the integer to print as it's next element
+ *
+ * Return: the number of bytes printed
  */
-void _printint(va_list list)
+int print_int(va_list args)
 {
-	printf("%d", va_arg(list, int));
+	return (printf("%i", va_arg(args, int)));
 }
 
 /**
- * print_all - print anything passed if char, int, float, or string.
- * @format: string of formats to use and print
+ * print_str - print a string
+ * @args: the va_list with the string to print as it's next element
+ *
+ * Return: the number of bytes printed
+ */
+int print_str(va_list args)
+{
+	const char *str = va_arg(args, const char *);
+
+	if (!str)
+		str = "(nil)";
+	return (printf("%s", str));
+}
+
+/**
+ * print_all - print anything
+ * @format: a format string listing the types of the proceeding arguments
+ * @...: the values to print
  */
 void print_all(const char * const format, ...)
 {
-	unsigned int i, j;
 	va_list args;
-	char *sep;
-
-	checker storage[] = {
-		{ "c", _printchar },
-		{ "f", _printfloat },
-		{ "s", _printstr },
-		{ "i", _printint }
+	print_fn_t fn_list[] = {
+		{'c', print_char},
+		{'f', print_float},
+		{'i', print_int},
+		{'s', print_str},
+		{ 0,  NULL}
 	};
+	char *sep[] = {"", ", "};
+	unsigned int bytes = 0, fn_index = 0, format_index = 0;
 
-	i = 0;
-	sep = "";
 	va_start(args, format);
-	while (format != NULL && format[i / 4] != '\0')
+	while (format && format[format_index])
 	{
-		j = i % 4;
-		if (storage[j].type[0] == format[i / 4])
+		fn_index = 0;
+		while (fn_list[fn_index].format)
 		{
-			printf("%s", sep);
-			storage[j].f(args);
-			sep = ", ";
+			if (format[format_index] == fn_list[fn_index].format)
+			{
+				printf("%s", sep[bytes != 0]);
+				bytes += fn_list[fn_index].fn(args);
+				break;
+			}
+			++fn_index;
 		}
-		i++;
+		++format_index;
 	}
 	printf("\n");
 	va_end(args);
