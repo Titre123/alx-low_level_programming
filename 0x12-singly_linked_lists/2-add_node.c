@@ -45,6 +45,7 @@ char *_strdup(const char *str)
 
 /**
  * add_node - insert a string at the beginning of the list
+ * @head: a pointer to the address of the first list node
  * @str: the string to add to the list
  * Return: If memory allocation fails, return NULL. Otherwise, return the
  * address of the new no
