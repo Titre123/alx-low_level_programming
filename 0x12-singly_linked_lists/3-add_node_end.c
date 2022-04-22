@@ -9,6 +9,7 @@
 size_t _strlen(const char *str)
 {
 	const char *pos = str;
+
 	if (str)
 	{
 		while (*pos)
