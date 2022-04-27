@@ -29,7 +29,7 @@ listint_t *reverse_listint(listint_t **head)
 {
 	if (!head)
 		return (NULL);
-	
+
 	*head = _reverse_listint(*head);
 	return (*head);
 }
