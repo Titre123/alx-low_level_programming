@@ -32,10 +32,9 @@ void _divide(unsigned long int n)
 		return;
 
 	_divide(n >> 1);
-}
 
 	if (n & 1)
 		_putchar('1');
 	else
 		_putchar('0');
-
+}
