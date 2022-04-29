@@ -37,4 +37,4 @@ void _divide(unsigned long int n)
 		_putchar('1');
 	else
 		_putchar('0');
-
+}
