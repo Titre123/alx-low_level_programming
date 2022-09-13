@@ -8,22 +8,22 @@
 
 int main(void)
 {
-    int n = 2;
-    int add;
-    
-    int a = 1;
-    int b = 2;
-    printf("%d, ",a);
-    
-    while (n < 98){
-        printf("%d, ",b);
-	add = a + b;
-        a = b;
-        b = add;
-        n++;
-    }
+	int count = 2;
+	long int i = 1, j = 2;
+	long int k;
 
-	  printf("\n");
-
-	  return (0);
+	printf("%lu, ", i);
+	while (count <= 98)
+	{
+		if (count == 50)
+			printf("%lu\n", j);
+		else
+			printf("%lu, ", j);
+		k = j;
+		j += i;
+		i = k;
+		count++;
+	}
+	printf("\n");
+	return (0);
 }
