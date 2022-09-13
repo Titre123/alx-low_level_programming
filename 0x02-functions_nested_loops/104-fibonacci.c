@@ -16,7 +16,8 @@ int main(void)
     
     while (n < 98){
         printf("%d, ",b);
-        int add = a + b;
+        int add;
+	add = a + b;
         a = b;
         b = add;
         n++;
