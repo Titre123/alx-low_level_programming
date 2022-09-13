@@ -8,25 +8,20 @@
 
 int main(void)
 {
-    	int num1, num2, i, n;
-	int next_num;
+    int n = 2;
+    
+    int a = 1;
+    int b = 2;
+    printf("%d, ",a);
+    
+    while (n < 98){
+        printf("%d, ",b);
+        int add = a + b;
+        a = b;
+        b = add;
+        n++;
+    }
 
-	n = 98;
-
-	for (i = 1; i <= n; i++)
-	{
-        	if (i == 98)
-		{
-			printf("%d, ", num2);
-		}
-		else
-		{
-	        	printf("%d, ", num2);
-			next_num = num1 + num2;
-			num1 = num2;
-			num2 = next_num;
-		}
-	  }
 	  printf("\n");
 
 	  return (0);
