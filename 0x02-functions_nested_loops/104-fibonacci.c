@@ -9,6 +9,7 @@
 int main(void)
 {
     int n = 2;
+    int add;
     
     int a = 1;
     int b = 2;
@@ -16,7 +17,6 @@ int main(void)
     
     while (n < 98){
         printf("%d, ",b);
-        int add;
 	add = a + b;
         a = b;
         b = add;
