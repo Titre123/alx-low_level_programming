@@ -7,12 +7,12 @@
  * add extra space past single digit
  */
 
-void times_table(void)
-{
-	for (r = 0; r <= 9; r++)
-	{
-		_putchar('0');
-		_putchar(',');
-		_putchar(' ')
-	}
+void times_table(void){
+    for (int i = 0; i < 10; i++){
+        for (int j = 0; j < 10; j++){
+            _putchar(i * j);
+	    _putchar(', ')
+        }
+        _putchar('\n');
+    }
 }
