@@ -1,4 +1,4 @@
-100-times_table.c
+#include "main.h"
 /**
  * print_times_table - Print the `n` times table, starting with 0.
  * Description: If `n` is greater than 15 or less than 0, print nothing.
