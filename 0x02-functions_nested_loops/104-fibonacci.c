@@ -13,9 +13,9 @@ int main(void)
 	long int k;
 
 	printf("%lu, ", i);
-	while (count <= 98)
+	while (count <= 99)
 	{
-		if (count == 98)
+		if (count == 99)
 			printf("%lu\n", j);
 		else
 			printf("%lu, ", j);
