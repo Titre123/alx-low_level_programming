@@ -15,13 +15,9 @@ void more_numbers(void)
 			if (j >= 10)
 			{
 				_putchar(j / 10 + 48);
-				_putchar(j % 10 + 48);
 			}
-			else
-			{
-				_putchar(j + '0');
-			}
+			_putchar(j % 10 + '0');
 		}
-		printf('\n');
+		_putchar('\n');
 	}
 }
