@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+* function that draws a straight line in the terminal
+* Return: void
+*/
+
 
 void print_line(int n)
 {
