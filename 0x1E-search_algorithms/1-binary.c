@@ -22,7 +22,7 @@ int binary_search(int *array, size_t size, int value)
 	return (second_binary(array, value, 0, size - 1));
 }
 
-**
+/**
  * help_binary - searches for a value in an array of
  * integers using recursion
  * @array: array to be searched
@@ -45,9 +45,9 @@ int second_binary(int *array, int value, size_t low, size_t high)
 	if (array[mid] == value)
 		return (mid);
 	if (array[mid] < value)
-		return (help_binary(array, value, mid + 1, high));
+		return (second_binary(array, value, mid + 1, high));
 	if (array[mid] > value)
-		return (help_binary(array, value, low, mid - 1));
+		return (second_binary(array, value, low, mid - 1));
 	return (-1);
 }
 
@@ -57,7 +57,7 @@ int second_binary(int *array, int value, size_t low, size_t high)
  * @low: index of the low boundary
  * @high: index of the high boundary
  */
-void array_print(int *array, size_t low, size_t high)
+void print(int *array, size_t low, size_t high)
 {
 	size_t i;
 
